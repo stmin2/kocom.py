@@ -226,7 +226,7 @@ def send(dest, src, cmd, value, log=None, check_ack=True):
             break
 
         # wait and checking for ACK
-        ack_data.append(type_h_dic['ack'] + seq_h + '00' +  src + dest + cmd + value)
+        ack_data.append(type_h_dic['ack'] + seq_h + '00' + dest + src + cmd + value)
         try:
             ack_q.get(True, 1.3+0.2*random.random()) # random wait between 1.3~1.5 seconds for ACK
             if config.get('Log', 'show_recv_hex') == 'True':
